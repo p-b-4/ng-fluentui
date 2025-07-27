@@ -43,7 +43,7 @@ import {
   <fluent-tab id="anchorregions">anchored region</fluent-tab>
   <fluent-tab id="horizontalscroll">Horizontal scroll</fluent-tab>
   <fluent-tab id="treeview">tree view</fluent-tab>
-  <fluent-tab id="undocumented">undocumented features</fluent-tab>
+  <fluent-tab id="calendar">calendar</fluent-tab>
 
   <fluent-tab-panel id="accordionPanel">
     <fluent-accordion style="max-width: 350px;">
@@ -191,6 +191,16 @@ import {
     <fluent-text-field appearance="outline" placeholder="user@email.com">Email</fluent-text-field>
     <h3>textarea</h3>
     <fluent-text-area placeholder="Describe your experience">How was your stay?</fluent-text-area>
+
+    <h3>toolbar with controls</h3>
+    <fluent-toolbar>
+      <fluent-radio-group>
+        <fluent-radio>Filter</fluent-radio>
+        <fluent-radio>
+          <fluent-search appearance="outline" placeholder="Search"/>
+        </fluent-radio>
+      </fluent-radio-group>
+    </fluent-toolbar>
 
     <h3>Slider</h3>
     <fluent-slider min="0" max="100" value="25" step="5" style="max-width: 300px;" title="Set the temperature">
@@ -375,10 +385,8 @@ import {
     </fluent-tree-view>
   </fluent-tab-panel>
 
-  <fluent-tab-panel id="undocumentedPanel">
-    <fluent-toolbar>
+  <fluent-tab-panel id="calendarPanel">
       <fluent-calendar />
-    </fluent-toolbar>
   </fluent-tab-panel>
 </fluent-tabs>
   `
