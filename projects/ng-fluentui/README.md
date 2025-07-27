@@ -2,46 +2,51 @@
 
 **Angular wrapper library for [@fluentui/web-components](https://www.npmjs.com/package/@fluentui/web-components) v2.6.1**
 
-This package allows you to use the Fluent UI Web Components in Angular (v20.1) **without** needing to configure `CUSTOM_ELEMENTS_SCHEMA`.
+This package allows you to use Fluent UI Web Components in Angular without needing to configure `CUSTOM_ELEMENTS_SCHEMA`.
 
-All Fluent UI Web Components have been registered as **standalone Angular components**, enabling seamless usage in Angular applications. These components act as simple wrappers around the original web components—they do not modify behavior or styles.
-
-## Features
-
-You can use Fluent UI Web Components in your Angular project according to their documentation.
-All this library does, is making sure you do not need to use the `CUSTOM_ELEMENTS_SCHEMA`.
+Using this library may help spot errors in component templates earlier in development. You do not need to disable template validation for unknown elements.
 
 ## Installation
 
-You'll need to install the official `@fluentui/web-components` package first in your Angular project:
-
-```
-npm install @fluentui/web-components@^2.6.1
-```
-
-Then you can also add this package in the following way:
-```
+1. Install the npm package:
+```bash
 npm install @pb4/ng-fluentui@latest
 ```
 
-## 🚀 Usage
+2. Register Fluent UI components in your `main.ts` file (before bootstrapApplication):
 
-Follow the official documentation regarding how to use and configure the Fluent UI Web Components:
+```ts
+import {
+  provideFluentDesignSystem,
+  allComponents
+} from "@fluentui/web-components";
 
-You need to configure the fluent-ui web components according to the official documentation:
+provideFluentDesignSystem()
+  .register(
+    allComponents
+  );
+```
+
+Instead of using allComponents, you can register only the Fluent UI Web Components you need.
+For alternative configuration options, see the official documentation:
 [Use Fluent UI Web Components with Angular](https://learn.microsoft.com/en-us/fluent-ui/web-components/integrations/angular)
 
-However, you don't need to use `schemas: [ CUSTOM_ELEMENTS_SCHEMA ]` in your components.
+## Prerequisites
 
-In stead, you can import the standalone component as provided in this library `@pb4/ng-fluentui`
+This package requires an Angular project.
 
-For example:
+Works with Angular v18 LTS to v20.1 latest.
+
+## 🚀 Usage
+
+Here's how to use fluent-tree-view and fluent-tree-item via this wrapper (no need for CUSTOM_ELEMENTS_SCHEMA):
+
 ```ts
 import { Component } from '@angular/core';
 import { FluentTreeView, FluentTreeItem } from '@pb4/ng-fluentui';
 
 @Component({
-  selector: 'app-page-component',
+  selector: 'app-example',
   standalone: true,
   imports: [FluentTreeView, FluentTreeItem],
   template: `
@@ -68,8 +73,7 @@ import { FluentTreeView, FluentTreeItem } from '@pb4/ng-fluentui';
 export class PageComponent {}
 ```
 
-To make the Angular components behave like the web components, you need to register them.
-You can for example do this, by adding the following code to your `main.ts` file:
+If you're not registering allComponents, then your main.ts should include just the ones you use:
 ```ts
 import {
   provideFluentDesignSystem,
@@ -83,16 +87,10 @@ provideFluentDesignSystem()
   );
 ```
 
-## What's the value of this library?
+## What this package is (and isn't)
+This is a wrapper for [@fluentui/web-components](https://www.npmjs.com/package/@fluentui/web-components).
+It does not change or extend the original web components.
 
-By not using `schemas: [ CUSTOM_ELEMENTS_SCHEMA ]` in your component, you will get error messages if you use element names that are not recognized.
-So it helps to spot errors earlier on.
+Microsoft maintains the actual web components. This wrapper library is not maintained by Microsoft.
 
-I don't know if I will actively maintain this library, so if you need this solution for a different version of Angular, you could choose to copy the source code.
-
-
-## What did I create
-
-A very simple wrapper library that makes sure Angular can know the element names of the Fluent UI Web components, as are available in version 2.6.1.
-
-I did not create the Fluent UI Web Components themselves. And this library does not distribute them either.
+This wrapper simply exposes the Fluint UI Web Components as Angular standalone components, for a better developer experience.

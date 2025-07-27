@@ -1,6 +1,6 @@
 {
   "name": "@pb4/ng-fluentui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Wrapper library to use Fluent UI web components within Angular",
   "license": "MIT",
   "repository": {
