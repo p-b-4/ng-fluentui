@@ -4,7 +4,7 @@
 
 This package allows you to use Fluent UI Web Components in Angular without needing to configure `CUSTOM_ELEMENTS_SCHEMA`.
 
-Using this library may help spot errors in component templates earlier in development. You do not need to disable template validation for unknown elements.
+Template validation remains enabled, which can help catch template errors early in development.
 
 ## Installation
 
@@ -35,7 +35,7 @@ For alternative configuration options, see the official documentation:
 
 This package requires an Angular project.
 
-Works with Angular v18 LTS to v20.1 latest.
+This library is expected to work with Angular v18 LTS through v20.1. Only minimal compatibility checks (e.g. basic rendering) have been done, since the package does not modify component behavior.
 
 ## 🚀 Usage
 
@@ -73,7 +73,7 @@ import { FluentTreeView, FluentTreeItem } from '@pb4/ng-fluentui';
 export class PageComponent {}
 ```
 
-If you're not registering allComponents, then your main.ts should include just the ones you use:
+If you're not registering allComponents, then your `main.ts` file should include just web components you use:
 ```ts
 import {
   provideFluentDesignSystem,
@@ -92,5 +92,6 @@ This is a wrapper for [@fluentui/web-components](https://www.npmjs.com/package/@
 It does not change or extend the original web components.
 
 Microsoft maintains the actual web components. This wrapper library is not maintained by Microsoft.
+Regular updates are not guaranteed, but the source code is available.
 
-This wrapper simply exposes the Fluint UI Web Components as Angular standalone components, for a better developer experience.
+It simply exposes the Fluent UI Web Components as Angular standalone components, for a better developer experience.
